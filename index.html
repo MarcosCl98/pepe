@@ -1,170 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>¿Quieres ser mi Valentín?</title>
+<meta charset="UTF-8">
+<title>¿Quieres ser mi Valentín?</title>
 
-  <style>
-    body {
-      background: linear-gradient(135deg, #ff4e88, #ff9ac6);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      font-family: Arial, sans-serif;
-      margin: 0;
-    }
+<style>
+body {
+  background: linear-gradient(135deg, #ff4e88, #ff9ac6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  overflow: hidden;
+}
 
-    .container {
-      text-align: center;
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      position: relative;
-      width: 400px;
-      min-height: 420px;
-    }
+/* Cuadro blanco */
+.container {
+  text-align: center;
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  position: relative;
+  width: 400px;
+  min-height: 420px;
+}
 
-    .gif {
-      width: 140px;
-      margin: 0 auto 15px auto;
-      pointer-events: none;
-    }
+.gif {
+  width: 140px;
+  margin: 0 auto 15px auto;
+  pointer-events: none;
+}
 
-    h1 {
-      margin: 10px 0 30px 0;
-      color: #ff2e6f;
-      font-size: 22px;
-    }
+h1 {
+  margin: 10px 0 30px 0;
+  color: #ff2e6f;
+  font-size: 22px;
+}
 
-    .botones {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      position: relative;
-    }
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
 
-    button {
-      padding: 12px 25px;
-      font-size: 18px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
+button {
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
 
-    #yes {
-      background-color: #ff2e6f;
-      color: white;
-    }
+#yes {
+  background-color: #ff2e6f;
+  color: white;
+}
 
-    #yes:hover {
-      transform: scale(1.1);
-    }
+#yes:hover {
+  transform: scale(1.1);
+}
 
-    #no {
-      background-color: #444;
-      color: white;
-    }
+#no {
+  background-color: #444;
+  color: white;
+}
 
-    /* Pantalla celebración */
-    .celebracion {
-      display: none;
-      text-align: center;
-    }
+/* Celebración dentro del cuadro */
+.celebracion {
+  display: none;
+  text-align: center;
+}
 
-    .celebracion h1 {
-      color: white;
-      font-size: 28px;
-      margin-bottom: 20px;
-    }
-  </style>
+.celebracion h1 {
+  color: #ff2e6f;
+  font-size: 26px;
+  margin-bottom: 20px;
+}
+
+.peepo {
+  width: 300px;
+  margin: 0 auto;
+}
+
+/* Apu flotando por pantalla */
+.apu {
+  position: fixed;
+  width: 150px;
+  animation: moverApu 6s linear infinite alternate;
+  z-index: 999;
+  display: none;
+}
+
+@keyframes moverApu {
+  0% { left: 5%; top: 10%; }
+  25% { left: 70%; top: 20%; }
+  50% { left: 40%; top: 60%; }
+  75% { left: 10%; top: 40%; }
+  100% { left: 80%; top: 70%; }
+}
+
+</style>
 </head>
 <body>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <div class="container" id="container">
+<!-- CONTENIDO PRINCIPAL -->
+<div class="container" id="container">
 
-    <div class="gif">
-      <div class="tenor-gif-embed"
-           data-postid="17318164"
-           data-share-method="host"
-           data-aspect-ratio="1"
-           data-width="100%">
-      </div>
+  <div class="gif">
+    <div class="tenor-gif-embed"
+         data-postid="17318164"
+         data-share-method="host"
+         data-aspect-ratio="1"
+         data-width="100%">
     </div>
-
-    <h1>¿Quieres ser mi Valentín? ❤️</h1>
-
-    <div class="botones">
-      <button id="yes">Sí</button>
-      <button id="no">No..</button>
-    </div>
-
   </div>
 
-  <!-- CELEBRACIÓN -->
-  <div class="celebracion" id="celebracion">
-    <h1>OSI OSI ✨✨✨✨✨<h1>
+  <h1>¿Quieres ser mi Valentín? ❤️</h1>
 
+  <div class="botones">
+    <button id="yes">Sí</button>
+    <button id="no">No..</button>
+  </div>
+
+</div>
+
+<!-- CELEBRACIÓN (MISMO CUADRO) -->
+<div class="container celebracion" id="celebracion">
+
+  <h1>OSI OSI✨✨✨✨✨</h1>
+
+  <div class="peepo">
     <div class="tenor-gif-embed"
          data-postid="19114091"
          data-share-method="host"
          data-aspect-ratio="1"
-         data-width="300px">
+         data-width="100%">
     </div>
   </div>
 
-  <!-- Música celebración -->
-  <audio id="musica" src="https://www.myinstants.com/media/sounds/tada-fanfare-a.mp3"></audio>
+</div>
 
-  <script async src="https://tenor.com/embed.js"></script>
+<!-- APU flotando -->
+<div class="apu" id="apu">
+  <div class="tenor-gif-embed"
+       data-postid="6516240353578321360"
+       data-share-method="host"
+       data-aspect-ratio="0.833333"
+       data-width="100%">
+  </div>
+</div>
 
-  <script>
-    const noButton = document.getElementById("no");
-    const container = document.getElementById("container");
-    const yesButton = document.getElementById("yes");
-    const celebracion = document.getElementById("celebracion");
-    const musica = document.getElementById("musica");
+<!-- Música -->
+<audio id="musica">
+  <source src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" type="audio/ogg">
+</audio>
 
-    function moverBoton() {
-      if (noButton.style.position !== "absolute") {
-        const rect = noButton.getBoundingClientRect();
-        const containerRect = container.getBoundingClientRect();
+<script async src="https://tenor.com/embed.js"></script>
 
-        noButton.style.position = "absolute";
-        noButton.style.left = (rect.left - containerRect.left) + "px";
-        noButton.style.top = (rect.top - containerRect.top) + "px";
-      }
+<script>
+const noButton = document.getElementById("no");
+const container = document.getElementById("container");
+const yesButton = document.getElementById("yes");
+const celebracion = document.getElementById("celebracion");
+const musica = document.getElementById("musica");
+const apu = document.getElementById("apu");
 
-      const maxX = container.clientWidth - noButton.offsetWidth;
-      const maxY = container.clientHeight - noButton.offsetHeight;
+function moverBoton() {
+  if (noButton.style.position !== "absolute") {
+    const rect = noButton.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
 
-      const randomX = Math.random() * maxX;
-      const randomY = Math.random() * maxY;
+    noButton.style.position = "absolute";
+    noButton.style.left = (rect.left - containerRect.left) + "px";
+    noButton.style.top = (rect.top - containerRect.top) + "px";
+  }
 
-      noButton.style.left = randomX + "px";
-      noButton.style.top = randomY + "px";
-    }
+  const maxX = container.clientWidth - noButton.offsetWidth;
+  const maxY = container.clientHeight - noButton.offsetHeight;
 
-    noButton.addEventListener("mouseover", moverBoton);
+  const randomX = Math.random() * maxX;
+  const randomY = Math.random() * maxY;
 
-    yesButton.addEventListener("click", () => {
+  noButton.style.left = randomX + "px";
+  noButton.style.top = randomY + "px";
+}
 
-      // Ocultar todo
-      container.style.display = "none";
+noButton.addEventListener("mouseover", moverBoton);
 
-      // Cambiar fondo
-      document.body.style.background = "linear-gradient(135deg, #ff2e6f, #ff9ac6)";
+yesButton.addEventListener("click", () => {
 
-      // Mostrar celebración
-      celebracion.style.display = "block";
+  container.style.display = "none";
+  celebracion.style.display = "block";
+  apu.style.display = "block";
 
-      // Reproducir música
-      musica.play();
-    });
-  </script>
+  musica.currentTime = 0;
+  musica.play().catch(e => console.log(e));
+});
+</script>
 
 </body>
 </html>
+

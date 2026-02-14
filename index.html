@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Quieres ser mi Valentín?</title>
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff4e88, #ff9ac6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      position: relative;
+      width: 400px;
+      min-height: 420px;
+    }
+
+    .gif {
+      width: 140px;
+      margin: 0 auto 15px auto;
+      pointer-events: none;
+    }
+
+    h1 {
+      margin: 10px 0 30px 0;
+      color: #ff2e6f;
+      font-size: 22px;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    #yes {
+      background-color: #ff2e6f;
+      color: white;
+    }
+
+    #yes:hover {
+      transform: scale(1.1);
+    }
+
+    #no {
+      background-color: #444;
+      color: white;
+    }
+
+    /* Pantalla celebración */
+    .celebracion {
+      display: none;
+      text-align: center;
+    }
+
+    .celebracion h1 {
+      color: white;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <div class="container" id="container">
+
+    <div class="gif">
+      <div class="tenor-gif-embed"
+           data-postid="17318164"
+           data-share-method="host"
+           data-aspect-ratio="1"
+           data-width="100%">
+      </div>
+    </div>
+
+    <h1>¿Quieres ser mi Valentín? ❤️</h1>
+
+    <div class="botones">
+      <button id="yes">Sí</button>
+      <button id="no">No..</button>
+    </div>
+
+  </div>
+
+  <!-- CELEBRACIÓN -->
+  <div class="celebracion" id="celebracion">
+    <h1>OSI OSI ✨✨✨✨✨<h1>
+
+    <div class="tenor-gif-embed"
+         data-postid="19114091"
+         data-share-method="host"
+         data-aspect-ratio="1"
+         data-width="300px">
+    </div>
+  </div>
+
+  <!-- Música celebración -->
+  <audio id="musica" src="https://www.myinstants.com/media/sounds/tada-fanfare-a.mp3"></audio>
+
+  <script async src="https://tenor.com/embed.js"></script>
+
+  <script>
+    const noButton = document.getElementById("no");
+    const container = document.getElementById("container");
+    const yesButton = document.getElementById("yes");
+    const celebracion = document.getElementById("celebracion");
+    const musica = document.getElementById("musica");
+
+    function moverBoton() {
+      if (noButton.style.position !== "absolute") {
+        const rect = noButton.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        noButton.style.position = "absolute";
+        noButton.style.left = (rect.left - containerRect.left) + "px";
+        noButton.style.top = (rect.top - containerRect.top) + "px";
+      }
+
+      const maxX = container.clientWidth - noButton.offsetWidth;
+      const maxY = container.clientHeight - noButton.offsetHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noButton.style.left = randomX + "px";
+      noButton.style.top = randomY + "px";
+    }
+
+    noButton.addEventListener("mouseover", moverBoton);
+
+    yesButton.addEventListener("click", () => {
+
+      // Ocultar todo
+      container.style.display = "none";
+
+      // Cambiar fondo
+      document.body.style.background = "linear-gradient(135deg, #ff2e6f, #ff9ac6)";
+
+      // Mostrar celebración
+      celebracion.style.display = "block";
+
+      // Reproducir música
+      musica.play();
+    });
+  </script>
+
+</body>
+</html>
